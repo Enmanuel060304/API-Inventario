@@ -1,5 +1,13 @@
-const PORT = process.env.PORT ?? 3000
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+const { PORT, SALT_ROUNDS, MONGO_URL, JWT_SECRET, JWT_EXPIRES_IN } = process.env
 
 export {
-  PORT
+  PORT,
+  SALT_ROUNDS,
+  MONGO_URL,
+  JWT_SECRET,
+  JWT_EXPIRES_IN
 }

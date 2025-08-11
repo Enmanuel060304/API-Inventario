@@ -3,12 +3,11 @@ export class UserService {
     this.UserRepository = UserRepository
   }
 
-  registerUser = (data) => {
+  registerUser = async (data) => {
     console.log('service data:', data)
-    const newData = this.UserRepository.registerUser(data)
-
+    const newData = await this.UserRepository.registerUser(data)
     return newData
   }
 
-  loginUser = data => this.UserRepository.loginUser(data)
+  loginUser = async data => await this.UserRepository.loginUser(data)
 }

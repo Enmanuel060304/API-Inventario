@@ -1,20 +1,43 @@
 import bcrypt from 'bcrypt'
-const saltRounds = 10
+import jwt from 'jsonwebtoken'
+import { SALT_ROUNDS, JWT_SECRET, JWT_EXPIRES_IN } from '../utils/config.js'
+import { UserModel } from '../models/user.model.js'
 
 export class UserRepository {
-  registerUser (data) {
-    data.password = bcrypt.hashSync(data.password, saltRounds)
-    console.log('repository data', data)
-    return {
-      message: 'usuario creado con la data',
-      ...data
-    }
+  async registerUser (data) {
+    const { name, username, password } = data
+
+    const user = await UserModel.findOne({ username })
+    if (user) throw new Error('username en uso')
+
+    const hashPassword = await bcrypt.hash(password, Number(SALT_ROUNDS))
+    const newUser = new UserModel({
+      username,
+      name,
+      passwordHash: hashPassword
+    })
+    console.log('repository data', newUser)
+
+    const response = await newUser.save()
+    return response
   }
 
-  loginUser (data) {
-    const { password } = data
-    const passwordhash = '$2b$10$cXqZKYhkcgIJL5Uyhita..65ZfQksqZ4ZP3Ui/DGE4.vfIf7hPow6'
-    const match = bcrypt.compareSync(password, passwordhash)
-    return match
+  async loginUser (data) {
+    const { username, password } = data
+
+    const user = await UserModel.findOne({ username })
+
+    if (!user) throw new Error('Usuario o contraseña incorrecta')
+
+    const match = await bcrypt.compare(password, user.passwordHash)
+
+    if (!match) throw new Error('Usuario o contraseña incorrecta')
+
+    const token = jwt.sign({ id: user._id, username: user.username },
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRES_IN }
+    )
+
+    return token
   }
 }
