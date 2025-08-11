@@ -3,8 +3,8 @@ export class UserController {
     this.UserService = UserService
   }
 
-  registerUser = (req, res) => {
-    const response = this.UserService.registerUser(req.body)
+  registerUser = async (req, res) => {
+    const response = await this.UserService.registerUser(req.body)
     res.send(response)
   }
 

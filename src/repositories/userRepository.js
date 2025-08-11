@@ -1,14 +1,21 @@
 import bcrypt from 'bcrypt'
-const saltRounds = 10
+import { SALT_ROUNDS } from '../utils/config.js'
+import { UserModel } from '../models/user.model.js'
 
 export class UserRepository {
-  registerUser (data) {
-    data.password = bcrypt.hashSync(data.password, saltRounds)
-    console.log('repository data', data)
-    return {
-      message: 'usuario creado con la data',
-      ...data
-    }
+  async registerUser (data) {
+    const { name, username, password } = data
+    const hashPassword = await bcrypt.hash(password, Number(SALT_ROUNDS))
+    const newUser = new UserModel({
+      username,
+      name,
+      passwordHash: hashPassword
+
+    })
+    console.log('repository data', newUser)
+
+    const response = await newUser.save()
+    return response
   }
 
   loginUser (data) {
