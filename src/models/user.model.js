@@ -4,15 +4,15 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    require: true
+    required: [true, 'El username es obligatorio']
   },
   name: {
     type: String,
-    require: true
+    required: [true, 'El nombre es obligatorio']
   },
   passwordHash: {
     type: String,
-    require: true
+    required: [true, 'La contraseña es obligatoria']
   }
 }, { collection: 'user' })
 

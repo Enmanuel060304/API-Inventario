@@ -6,7 +6,6 @@ export class UserService {
   registerUser = async (data) => {
     console.log('service data:', data)
     const newData = await this.UserRepository.registerUser(data)
-
     return newData
   }
 
