@@ -12,9 +12,9 @@ export class UserRepository {
   }
 
   loginUser (data) {
-    // const { password } = data
+    const { password } = data
     const passwordhash = '$2b$10$cXqZKYhkcgIJL5Uyhita..65ZfQksqZ4ZP3Ui/DGE4.vfIf7hPow6'
-    const match = bcrypt.compareSync('123', passwordhash)
+    const match = bcrypt.compareSync(password, passwordhash)
     return match
   }
 }
