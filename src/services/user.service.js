@@ -9,5 +9,5 @@ export class UserService {
     return newData
   }
 
-  loginUser = data => this.UserRepository.loginUser(data)
+  loginUser = async data => await this.UserRepository.loginUser(data)
 }

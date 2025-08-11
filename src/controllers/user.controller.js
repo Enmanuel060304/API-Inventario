@@ -12,8 +12,16 @@ export class UserController {
     }
   }
 
-  loginUser = (req, res) => {
-    const response = this.UserService.loginUser(req.body)
-    res.json({ messgae: response })
+  loginUser = async (req, res) => {
+    try {
+      const response = await this.UserService.loginUser(req.body)
+      res.cookie('token', response, {
+        httpOnly: true,
+        secure: false
+      })
+      res.json({ message: 'login exitoso ', response })
+    } catch (error) {
+      res.status(400).json({ error: error.message })
+    }
   }
 }

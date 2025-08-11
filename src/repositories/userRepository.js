@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
-import { SALT_ROUNDS } from '../utils/config.js'
+import jwt from 'jsonwebtoken'
+import { SALT_ROUNDS, JWT_SECRET, JWT_EXPIRES_IN } from '../utils/config.js'
 import { UserModel } from '../models/user.model.js'
 
 export class UserRepository {
@@ -22,10 +23,21 @@ export class UserRepository {
   }
 
   async loginUser (data) {
-    const { password } = data
-    const passwordhash = '$2b$10$cXqZKYhkcgIJL5Uyhita..65ZfQksqZ4ZP3Ui/DGE4.vfIf7hPow6'
-    const match = bcrypt.compareSync(password, passwordhash)
-    // const match = await UserModel.deleteMany({})
-    return match
+    const { username, password } = data
+
+    const user = await UserModel.findOne({ username })
+
+    if (!user) throw new Error('Usuario o contraseña incorrecta')
+
+    const match = await bcrypt.compare(password, user.passwordHash)
+
+    if (!match) throw new Error('Usuario o contraseña incorrecta')
+
+    const token = jwt.sign({ id: user._id, username: user.username },
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRES_IN }
+    )
+
+    return token
   }
 }
