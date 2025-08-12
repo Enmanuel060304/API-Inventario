@@ -6,6 +6,7 @@ export const createRouter = ({ UserController }) => {
 
   userRouter.post('/register', UserController.registerUser)
   userRouter.post('/login', UserController.loginUser)
+  userRouter.post('/logout', UserController.logoutUser)
   userRouter.get('/hola', authMiddleware, (req, res) => {
     res.send('probando autenticacion')
   })

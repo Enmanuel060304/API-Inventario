@@ -24,4 +24,12 @@ export class UserController {
       res.status(400).json({ error: error.message })
     }
   }
+
+  logoutUser = (req, res) => {
+    res
+      .clearCookie('token', {
+        httpOnly: true
+      })
+      .json({ message: 'session cerrada' })
+  }
 }
