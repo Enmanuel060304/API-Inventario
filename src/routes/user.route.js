@@ -8,7 +8,7 @@ export const createRouter = ({ UserController }) => {
   userRouter.post('/login', UserController.loginUser)
   userRouter.post('/logout', UserController.logoutUser)
   userRouter.get('/hola', authMiddleware, (req, res) => {
-    res.send('probando autenticacion')
+    res.send(`Bienvenido ${req.user.username}`)
   })
 
   return userRouter

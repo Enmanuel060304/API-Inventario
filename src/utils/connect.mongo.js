@@ -5,6 +5,6 @@ export const connectMongoDB = async (URL) => {
     await mongoose.connect(URL)
     console.log('conectado a mongodb')
   } catch (error) {
-    console.log(`algo malo paso ose esto ${error}`)
+    console.log(`algo malo paso osea esto ${error}`)
   }
 }
