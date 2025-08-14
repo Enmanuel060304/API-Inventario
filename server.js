@@ -1,7 +1,7 @@
 import express from 'express'
 import { unknownEndPoint } from './src/middlewares/unknownRoute.js'
 import { conectarSQL } from './src/utils/connect.mssql.js'
-import { userRouter } from './src/utils/UserDependencies.js'
+import { userRouter } from './src/utils/authDependencies.js'
 
 import { PORT } from './src/utils/config.js'
 import cookieParser from 'cookie-parser'

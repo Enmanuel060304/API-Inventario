@@ -1,7 +1,7 @@
-import { UserRepository } from '../repositories/userRepository.js'
-import { UserService } from '../services/user.service.js'
-import { UserController } from '../controllers/user.controller.js'
-import { createRouter } from '../routes/user.route.js'
+import { UserRepository } from '../repositories/authRepository.js'
+import { UserService } from '../services/auth.service.js'
+import { UserController } from '../controllers/auth.controller.js'
+import { createRouter } from '../routes/auth.route.js'
 
 const userRepository = new UserRepository()
 const userService = new UserService({ UserRepository: userRepository })
