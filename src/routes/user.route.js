@@ -9,7 +9,6 @@ export const createRouter = ({ UserController }) => {
   userRouter.post('/logout', UserController.logoutUser)
   userRouter.get('/hola', authMiddleware, (req, res) => {
     res.send(`Bienvenido ${req.user.username}`)
-    res.send('ruta protegida')
   })
 
   return userRouter
