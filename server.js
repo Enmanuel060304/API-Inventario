@@ -1,22 +1,12 @@
 import express from 'express'
 import { unknownEndPoint } from './src/middlewares/unknownRoute.js'
-// import { connectMongoDB } from './src/utils/connect.mongo.js'
 import { conectarSQL } from './src/utils/connect.mssql.js'
+import { userRouter } from './src/utils/UserDependencies.js'
 
-import { UserRepository } from './src/repositories/userRepository.js'
-import { UserService } from './src/services/user.service.js'
-import { UserController } from './src/controllers/user.controller.js'
-import { createRouter } from './src/routes/user.route.js'
 import { PORT } from './src/utils/config.js'
 import cookieParser from 'cookie-parser'
 
-const userRepository = new UserRepository()
-const userService = new UserService({ UserRepository: userRepository })
-const userController = new UserController({ UserService: userService })
-const userRouter = createRouter({ UserController: userController })
-
 const app = express()
-// connectMongoDB(MONGO_URL)
 conectarSQL()
 
 app.disable('x-powered-by') // !cabezera desactivada por seguridad

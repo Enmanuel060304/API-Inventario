@@ -1,10 +1,10 @@
 import { Sequelize } from 'sequelize'
-
+import { DB_NAME, DB_USER, DB_PASSWORD, DB_PORT, DB_HOST } from './config.js'
 // conectar a la base de datos
-const sequelize = new Sequelize('InventarioLupita', 'sa', 'MiClaveSegura123', {
-  host: 'localhost',
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
   dialect: 'mssql',
   logging: false,
-  port: 1435
+  port: DB_PORT
 })
 export default sequelize
