@@ -6,7 +6,7 @@ export class UserController {
   registerUser = async (req, res) => {
     try {
       const response = await this.UserService.registerUser(req.body)
-      res.send(response)
+      res.status(201).send(response)
     } catch (error) {
       res.status(400).json({ error: error.message })
     }
