@@ -26,6 +26,4 @@ const Usuario = sequelize.define('usuarios', {
   schema: 'dbo'
 })
 
-export {
-  Usuario
-}
+export default Usuario

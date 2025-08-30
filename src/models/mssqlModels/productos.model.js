@@ -1,8 +1,8 @@
 import sequelize from '../../utils/mssql.config.js'
 import { DataTypes } from 'sequelize'
-import { Categoria } from './categorias.model.js'
+import Categoria from './categorias.model.js'
 
-export const Producto = sequelize.define('producto', {
+const Producto = sequelize.define('producto', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -38,3 +38,5 @@ export const Producto = sequelize.define('producto', {
   schema: 'dbo'
 }
 )
+
+export default Producto

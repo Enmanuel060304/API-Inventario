@@ -18,6 +18,7 @@ app.use('/api/auth', authRouter)
 // app.use('/api/categorias', categoryRouter)
 // app.use('/api/movimientos', movementRouter)
 
+
 app.use(unknownEndPoint)
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)

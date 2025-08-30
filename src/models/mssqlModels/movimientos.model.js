@@ -1,9 +1,9 @@
 import sequelize from '../../utils/mssql.config.js'
 import { DataTypes } from 'sequelize'
-import { Producto } from './productos.model.js'
-import { Usuario } from './usuarios.model.js'
+import Producto from './productos.model.js'
+import Usuario from './usuarios.model.js'
 
-export const Movimientos = sequelize.define('movimientos', {
+const Movimientos = sequelize.define('movimientos', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -48,3 +48,5 @@ export const Movimientos = sequelize.define('movimientos', {
   schema: 'dbo'
 }
 )
+
+export default Movimientos

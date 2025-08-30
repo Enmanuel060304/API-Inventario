@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { SALT_ROUNDS, JWT_SECRET, JWT_EXPIRES_IN } from '../utils/config.js'
-import { Usuario } from '../models/mssqlModels/usuarios.model.js'
+import Usuario from '../models/mssqlModels/usuarios.model.js'
 
 export class UserRepository {
   async registerUser (data) {

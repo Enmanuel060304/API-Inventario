@@ -1,7 +1,7 @@
 import sequelize from '../../utils/mssql.config.js'
 import { DataTypes } from 'sequelize'
 
-export const Categoria = sequelize.define('categorias', {
+const Categoria = sequelize.define('categorias', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -21,3 +21,5 @@ export const Categoria = sequelize.define('categorias', {
   timestamps: false,
   schema: 'dbo'
 })
+
+export default Categoria
