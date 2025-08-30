@@ -7,7 +7,6 @@ import sequelize from '../../utils/mssql.config.js'
 Categoria.hasMany(Producto, {
   foreignKey: 'categoria_id'
 })
-
 Producto.belongsTo(Categoria, {
   foreignKey: 'categoria_id'
 })
@@ -15,7 +14,6 @@ Producto.belongsTo(Categoria, {
 Movimientos.belongsTo(Producto, {
   foreignKey: 'producto_id'
 })
-
 Producto.hasMany(Movimientos, {
   foreignKey: 'producto_id'
 })
@@ -23,7 +21,6 @@ Producto.hasMany(Movimientos, {
 Movimientos.belongsTo(Usuario, {
   foreignKey: 'usuario_id'
 })
-
 Usuario.hasMany(Movimientos, {
   foreignKey: 'usuario_id'
 });

@@ -6,6 +6,6 @@ import { createRouter } from '../routes/auth.route.js'
 const userRepository = new UserRepository()
 const userService = new UserService({ UserRepository: userRepository })
 const userController = new UserController({ UserService: userService })
-const userRouter = createRouter({ UserController: userController })
+const authRouter = createRouter({ UserController: userController })
 
-export { userRouter }
+export { authRouter }

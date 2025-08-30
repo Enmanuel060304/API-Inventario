@@ -1,15 +1,13 @@
 import { Router } from 'express'
-import { authMiddleware } from '../middlewares/authMiddleware.js'
+import { loginBodyValidate } from '../middlewares/loginBodyValidate.js'
+import { registerBodyValidate } from '../middlewares/registerBodyValidate.js'
 
 export const createRouter = ({ UserController }) => {
   const userRouter = Router()
 
-  userRouter.post('/register', UserController.registerUser)
-  userRouter.post('/login', UserController.loginUser)
+  userRouter.post('/register', registerBodyValidate, UserController.registerUser)
+  userRouter.post('/login', loginBodyValidate, UserController.loginUser)
   userRouter.post('/logout', UserController.logoutUser)
-  userRouter.get('/hola', authMiddleware, (req, res) => {
-    res.send(`Bienvenido ${req.user.username}`)
-  })
 
   return userRouter
 }
