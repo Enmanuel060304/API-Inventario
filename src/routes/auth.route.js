@@ -26,7 +26,13 @@ export const createRouter = ({ UserController }) => {
    *         application/json:
    *           schema:
    *             type: object
+   *             required:
+   *               - name
+   *               - username
+   *               - password
    *             properties:
+   *               name:
+   *                 type: string
    *               username:
    *                 type: string
    *               password:
