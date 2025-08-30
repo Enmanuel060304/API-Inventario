@@ -14,8 +14,10 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use('/api/auth', authRouter)
-// app.use('/api/productos', productRouter)
+// app.use('/api/usuarios', usuarioRouter)
+// app.use('/api/ventas', ventaRouter)
 // app.use('/api/categorias', categoryRouter)
+// app.use('/api/productos', productRouter)
 // app.use('/api/movimientos', movementRouter)
 
 
