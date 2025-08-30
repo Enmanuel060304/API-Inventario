@@ -7,6 +7,7 @@
  */
 import { Router } from 'express'
 import { authMiddleware } from '../middlewares/authMiddleware.js'
+import  ValidateBody from '../middlewares/Category/Create.middleware.js'
 
 const createCategoryRouter = ({ CategoryController }) => {
   const router = Router()
@@ -23,7 +24,7 @@ const createCategoryRouter = ({ CategoryController }) => {
   *       200:
   *         description: Lista de categorías
    */
-  router.get('/',authMiddleware, (req, res) => CategoryController.getCategories(req, res))
+  router.get('/',authMiddleware,(req, res) => CategoryController.getCategories(req, res))
 
 
   /**
@@ -49,7 +50,7 @@ const createCategoryRouter = ({ CategoryController }) => {
    *       400:
    *         description: Datos inválidos
    */
-  // router.post('/', (req, res) => CategoryController.createCategory(req, res))
+  router.post('/',authMiddleware, ValidateBody, (req, res) => CategoryController.createCategory(req, res))
 
 
   /**

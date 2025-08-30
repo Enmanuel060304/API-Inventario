@@ -3,8 +3,9 @@ export class CategoryService {
     this.categoryRepository = CategoryRepository
   } 
 
-  getCategories = async () => {
-    const data = await this.categoryRepository.getCategories()
-    return data
-  }
+  getCategories = async () => await this.categoryRepository.getCategories()
+  
+  createCategory = async ({ nombre, descripcion }) => await this.categoryRepository.createCategory({ nombre, descripcion })
+
+  
 }
