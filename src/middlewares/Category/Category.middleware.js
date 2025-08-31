@@ -13,4 +13,20 @@ const ValidateBody = (req, res, next) => {
   next()
 } 
 
-export default ValidateBody
+const ValidateUpdateBody = (req, res, next) => {
+  const result = CreateSchema.partial().safeParse(req.body)
+
+  if(!result.success){
+    return res.status(400).json({
+      message: "Validation error",
+      errors: result.error.issues
+    })
+  }
+
+  next()
+}
+
+export { 
+  ValidateBody,  
+  ValidateUpdateBody
+}

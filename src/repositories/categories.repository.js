@@ -14,4 +14,12 @@ export class CategoryRepository {
 
     return await Categoria.create({ nombre, descripcion })
   }
+
+  updateCategory =  async ({ id, nombre, descripcion }) => {
+    return await Categoria.update({ nombre, descripcion }, {
+      where: {
+        id
+      }
+    })
+  }
 }

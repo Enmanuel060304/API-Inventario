@@ -7,7 +7,7 @@
  */
 import { Router } from 'express'
 import { authMiddleware } from '../middlewares/authMiddleware.js'
-import  ValidateBody from '../middlewares/Category/Create.middleware.js'
+import  { ValidateBody, ValidateUpdateBody } from '../middlewares/Category/Category.middleware.js'
 
 const createCategoryRouter = ({ CategoryController }) => {
   const router = Router()
@@ -25,7 +25,6 @@ const createCategoryRouter = ({ CategoryController }) => {
   *         description: Lista de categorías
    */
   router.get('/',authMiddleware,(req, res) => CategoryController.getCategories(req, res))
-
 
   /**
    * @swagger
@@ -52,40 +51,39 @@ const createCategoryRouter = ({ CategoryController }) => {
    */
   router.post('/',authMiddleware, ValidateBody, (req, res) => CategoryController.createCategory(req, res))
 
-
   /**
    * @swagger
    * /categorias/{id}:
-   *   put:
+   *   patch:
    *     summary: Actualizar una categoría
    *     tags: [Categorías]
-  *     security:
-  *       - bearerAuth: []
-  *     parameters:
-  *       - in: path
-  *         name: id
-  *         required: true
-  *         schema:
-  *           type: string
-  *         description: ID de la categoría
-  *     requestBody:
-  *       required: true
-  *       content:
-  *         application/json:
-  *           schema:
-  *             type: object
-  *             properties:
-  *               nombre:
-  *                 type: string
-  *     responses:
-  *       200:
-  *         description: Categoría actualizada
-  *       400:
-  *         description: Datos inválidos
-  *       404:
-  *         description: Categoría no encontrada
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: ID de la categoría
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               nombre:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Categoría actualizada
+   *       400:
+   *         description: Datos inválidos
+   *       404:
+   *         description: Categoría no encontrada
    */
-  // router.put('/:id', (req, res) => CategoryController.updateCategory(req, res))
+  router.patch('/:id', authMiddleware, ValidateUpdateBody, (req, res) => CategoryController.updateCategory(req, res))
 
 
   /**

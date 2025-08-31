@@ -22,5 +22,14 @@ export class CategoryController {
     }
   }
 
-  
+  updateCategory = async (req, res) => {
+    try {
+      const { id } = req.params
+      const { nombre, descripcion } = req.body
+      const result = await this.categoryService.updateCategory({ id, nombre, descripcion })
+      res.json(result)
+    } catch (error) {
+      res.status(400).json({ message: error.message })
+    }
+  } 
 }

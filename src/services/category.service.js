@@ -7,5 +7,5 @@ export class CategoryService {
   
   createCategory = async ({ nombre, descripcion }) => await this.categoryRepository.createCategory({ nombre, descripcion })
 
-  
+  updateCategory = async ({ id, nombre, descripcion }) => await this.categoryRepository.updateCategory({ id, nombre, descripcion })
 }
