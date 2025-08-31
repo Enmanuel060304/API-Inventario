@@ -96,7 +96,7 @@ const createProductsRouter = ({ ProductsController }) => {
    *       404:
    *         description: Producto no encontrado
    */
-  router.patch('/:id', authMiddleware, (req, res) => ProductsController.updateProduct(req, res))
+  router.patch('/:id', validateProductInput, authMiddleware, (req, res) => ProductsController.updateProduct(req, res))
 
   /**
    * @swagger
