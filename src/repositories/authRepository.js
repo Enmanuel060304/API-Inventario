@@ -9,8 +9,6 @@ export class UserRepository {
 
     const user = await Usuario.findOne({ where: { username } })
 
-    console.log(user)
-
     if (user) throw new Error('username en uso')
 
     const hashPassword = await bcrypt.hash(password, Number(SALT_ROUNDS))
@@ -25,7 +23,6 @@ export class UserRepository {
 
   async loginUser (data) {
     const { username, password } = data
-    console.log('loginUser data', data)
 
     const user = await Usuario.findOne({ where: { username } })
     if (!user) throw new Error('Usuario o contraseña incorrecta')
