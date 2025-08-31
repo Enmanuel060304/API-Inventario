@@ -16,10 +16,20 @@ export class CategoryRepository {
   }
 
   updateCategory =  async ({ id, nombre, descripcion }) => {
-    return await Categoria.update({ nombre, descripcion }, {
-      where: {
-        id
+      const category = await Categoria.findByPk(id)
+      if (!category) throw new Error("Categoría no encontrada")
+
+      if (category.nombre !== nombre) {
+        const existingCategory = await Categoria.findOne({ where: { nombre } })
+        if (existingCategory) throw new Error("nombre de categoria ya en uso")
       }
-    })
+
+      await Categoria.update({ nombre, descripcion }, {
+        where: {
+          id
+        }
+      })
+
+      return await Categoria.findByPk(id)
   }
 }

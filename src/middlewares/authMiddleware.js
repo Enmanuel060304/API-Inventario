@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from '../utils/config.js'
 
 export const authMiddleware = (req, res, next) => {
-  console.log(req.cookies)
+  // console.log(req.cookies)
 
   const token = req.cookies?.token
   if (!token) return res.status(401).json({ error: 'usuario no autenticado' })

@@ -14,7 +14,7 @@ const ValidateBody = (req, res, next) => {
 } 
 
 const ValidateUpdateBody = (req, res, next) => {
-  const result = CreateSchema.partial().safeParse(req.body)
+  const result = CreateSchema.safeParse(req.body)
 
   if(!result.success){
     return res.status(400).json({
