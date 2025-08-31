@@ -40,9 +40,18 @@ const createCategoryRouter = ({ CategoryController }) => {
   *         application/json:
   *           schema:
   *             type: object
+  *             required:
+  *               - nombre
+  *               - descripcion
   *             properties:
-   *               nombre:
-   *                 type: string
+  *               nombre:
+  *                 type: string
+  *                 example: "Bebidas"
+  *                 description: "Nombre de la categoría (requerido, 1-100 caracteres)"
+  *               descripcion:
+  *                 type: string
+  *                 example: "Productos líquidos y refrescos"
+  *                 description: "Descripción de la categoría (requerido, 1-255 caracteres)"
    *     responses:
    *       201:
    *         description: Categoría creada
@@ -72,9 +81,18 @@ const createCategoryRouter = ({ CategoryController }) => {
    *         application/json:
    *           schema:
    *             type: object
-   *             properties:
-   *               nombre:
-   *                 type: string
+  *             required:
+  *               - nombre
+  *               - descripcion
+  *             properties:
+  *               nombre:
+  *                 type: string
+  *                 example: "Bebidas"
+  *                 description: "Nombre de la categoría (requerido, 1-100 caracteres)"
+  *               descripcion:
+  *                 type: string
+  *                 example: "Productos líquidos y refrescos"
+  *                 description: "Descripción de la categoría (requerido, 1-255 caracteres)"
    *     responses:
    *       200:
    *         description: Categoría actualizada
