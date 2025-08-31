@@ -32,4 +32,6 @@ export class CategoryRepository {
 
       return await Categoria.findByPk(id)
   }
+
+  deleteCategory = async ({ id }) => await Categoria.destroy({ where: { id } })
 }

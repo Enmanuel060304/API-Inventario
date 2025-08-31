@@ -35,4 +35,14 @@ export class CategoryController {
       res.status(404).json({ message: error.message })
     }
   } 
+
+  deleteCategory = async (req, res) => {
+    try {
+      const { id } = req.params
+      await this.categoryService.deleteCategory(id)
+      res.status(200).json({ message: "Categoría eliminada" })
+    } catch (error) {
+      res.status(404).json({ message: error.message })
+    }
+  }
 }

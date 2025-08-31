@@ -107,7 +107,7 @@ const createCategoryRouter = ({ CategoryController }) => {
   *       404:
   *         description: Categoría no encontrada
    */
-  // router.delete('/:id', (req, res) => CategoryController.deleteCategory(req, res))
+  router.delete('/:id',authMiddleware, (req, res) => CategoryController.deleteCategory(req, res))
 
   return router
 }
