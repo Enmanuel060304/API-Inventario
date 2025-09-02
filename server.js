@@ -4,6 +4,7 @@ import { conectarSQL } from './src/utils/connect.mssql.js'
 import { authRouter } from './src/utils/authDependencies.js'
 import categoryRouter from './src/utils/category/categoryDependencies.js'
 import productRouter from './src/utils/product/productDependecy.js'
+import providerRouter from './src/utils/provider/providerDependecy.js'
 
 import { PORT } from './src/utils/config.js'
 import cookieParser from 'cookie-parser'
@@ -20,6 +21,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/categorias', categoryRouter)
 // app.use('/api/ventas', ventaRouter)
 app.use('/api/productos', productRouter)
+app.use('/api/proveedores', providerRouter)
 // app.use('/api/movimientos', movementRouter)
 
 
