@@ -7,7 +7,7 @@ export class ProviderService {
     return this.ProviderRepository.getAll()
   }
 
-  async create({ data }) {
+  async create(data) {
     return this.ProviderRepository.createProvider({ data })
   }
 

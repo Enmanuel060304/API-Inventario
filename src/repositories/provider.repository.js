@@ -6,13 +6,23 @@ export class ProviderRepository {
   }
 
   async createProvider({ data }) {
+
+    const result = await Proveedor.findByPk(data.email)
+
+    if (!result) {
+      throw new Error('El proveedor ya existe');
+    }
+
     return await Proveedor.create(data);
   }
 
   async updateProvider({ id, data }) {
-    return await Proveedor.update(data, {
+    await Proveedor.update(data, {
       where: { id }
     });
+
+    const updated = await Proveedor.findByPk(id);
+    return updated;
   }
 
   async deleteProvider({ id }) {
