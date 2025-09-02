@@ -4,18 +4,18 @@ export class ProviderService {
   }
 
   async findAll() {
-    return this.ProviderRepository.getAll()
+    return await this.ProviderRepository.getAll()
   }
 
   async create(data) {
-    return this.ProviderRepository.createProvider({ data })
+    return await this.ProviderRepository.createProvider({ data })
   }
 
   async update({ id, data }) {
-    return this.ProviderRepository.updateProvider({ id, data })
+    return await this.ProviderRepository.updateProvider({ id, data })
   }
 
   async delete({ id }) {
-    return this.ProviderRepository.deleteProvider({ id })
+    return await this.ProviderRepository.deleteProvider({ id })
   }
 }
