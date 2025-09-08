@@ -4,7 +4,7 @@ import { conectarSQL } from './src/utils/connect.mssql.js'
 import { authRouter } from './src/utils/authDependencies.js'
 import categoryRouter from './src/utils/category/categoryDependencies.js'
 import productRouter from './src/utils/product/productDependecy.js'
-import { providerRouter } from './src/utils/provider/providerDependecy.js'
+import providerRouter from './src/utils/provider/providerDependecy.js'
 
 import { PORT } from './src/utils/config.js'
 import cookieParser from 'cookie-parser'

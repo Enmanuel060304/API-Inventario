@@ -8,14 +8,14 @@ export class ProviderService {
   }
 
   async create(data) {
-    return await this.ProviderRepository.createProvider({ data })
+    return await this.ProviderRepository.create({ data })
   }
 
   async update({ id, data }) {
-    return await this.ProviderRepository.updateProvider({ id, data })
+    return await this.ProviderRepository.update({ id, data })
   }
 
   async delete({ id }) {
-    return await this.ProviderRepository.deleteProvider({ id })
+    return await this.ProviderRepository.delete({ id })
   }
 }

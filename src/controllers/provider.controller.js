@@ -1,9 +1,10 @@
 export class ProviderController {
   constructor({ ProviderService }) {
-    this.ProviderService = ProviderService
+    console.log(ProviderService);
+    this.ProviderService = ProviderService;
   }
 
-  async getAllProviders(req, res) {
+  getAll = async (req, res) => {
     try {
       const providers = await this.ProviderService.findAll()
       res.json(providers)
@@ -12,7 +13,7 @@ export class ProviderController {
     }
   }
 
-  async createProvider(req, res) {
+  create = async (req, res) => {
     try {
       const provider = await this.ProviderService.create(req.body)
       res.status(201).json(provider)
@@ -21,7 +22,7 @@ export class ProviderController {
     }
   }
 
-  async updateProvider(req, res) {
+  update = async (req, res) => {
     const { id } = req.params
     try {
       const provider = await this.ProviderService.update({ id, data: req.body })
@@ -31,7 +32,7 @@ export class ProviderController {
     }
   }
 
-  async deleteProvider(req, res) {
+  delete = async (req, res) => {
     const { id } = req.params
     try {
       await this.ProviderService.delete({ id })

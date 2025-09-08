@@ -5,18 +5,16 @@ export class ProviderRepository {
     return await Proveedor.findAll();
   }
 
-  async createProvider({ data }) {
-
-    const result = await Proveedor.findByPk(data.email)
-
-    if (!result) {
+  async create({ data }) {
+    // Buscar si ya existe un proveedor con el mismo email
+    const result = await Proveedor.findOne({ where: { email: data.email } });
+    if (result) {
       throw new Error('El proveedor ya existe');
     }
-
     return await Proveedor.create(data);
   }
 
-  async updateProvider({ id, data }) {
+  async update({ id, data }) {
     await Proveedor.update(data, {
       where: { id }
     });
@@ -25,7 +23,7 @@ export class ProviderRepository {
     return updated;
   }
 
-  async deleteProvider({ id }) {
+  async delete({ id }) {
     return await Proveedor.destroy({
       where: { id }
     });

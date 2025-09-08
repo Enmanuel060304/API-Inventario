@@ -4,18 +4,18 @@ export class ProductService {
   }
 
   async getAllProducts() {
-    return this.productRepository.getAllProducts()
+    return await this.productRepository.getAllProducts()
   }
 
   async createProduct(data) {
-    return this.productRepository.createProduct(data)
+    return await this.productRepository.createProduct(data)
   }
 
   async updateProduct(id, data) {
-    return this.productRepository.updateProduct(id, data)
+    return await this.productRepository.updateProduct(id, data)
   }
 
   async deleteProduct(id) {
-    return this.productRepository.deleteProduct(id)
+    return await this.productRepository.deleteProduct(id)
   }
 }
