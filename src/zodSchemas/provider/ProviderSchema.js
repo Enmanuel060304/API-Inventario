@@ -7,7 +7,7 @@ export const ProviderSchema = z.object({
     .max(50, { message: 'El nombre completo no debe exceder 50 caracteres.' })
     .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, { message: 'El nombre completo solo puede contener letras y espacios.' }),
   phoneNumber: z.string()
-    .min(8, { message: 'El número de teléfono debe tener al menos 10 dígitos.' })
+    .min(10, { message: 'El número de teléfono debe tener al menos 10 dígitos.' })
     .max(15, { message: 'El número de teléfono no debe exceder 15 dígitos.' })
     .regex(/^\+?\d{10,15}$/, { message: 'El número de teléfono debe ser válido y solo contener dígitos, puede iniciar con +.' }),
   email: z.string().email({ message: 'El correo electrónico debe ser válido.' }),
