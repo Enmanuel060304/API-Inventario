@@ -1,6 +1,5 @@
 export class ProviderController {
   constructor({ ProviderService }) {
-    console.log(ProviderService);
     this.ProviderService = ProviderService;
   }
 

@@ -30,4 +30,5 @@ app.use(unknownEndPoint)
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
+  console.log(`swagger documentation on http://localhost:${PORT}/api/docs`)
 })
