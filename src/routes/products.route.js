@@ -122,47 +122,6 @@ const createProductsRouter = ({ ProductsController }) => {
   router.delete('/:id', authMiddleware, (req, res) => ProductsController.deleteProduct(req, res))
 
   return router
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Producto:
- *       type: object
- *       properties:
- *         id:
- *           type: string
- *           format: uuid
- *         nombre:
- *           type: string
- *         descripcion:
- *           type: string
- *           nullable: true
- *         precio:
- *           type: number
- *           format: float
- *         stock:
- *           type: integer
- *         categoria_id:
- *           type: string
- *           format: uuid
- *     ProductoInput:
- *       type: object
- *       properties:
- *         nombre:
- *           type: string
- *         descripcion:
- *           type: string
- *           nullable: true
- *         precio:
- *           type: number
- *           format: float
- *         stock:
- *           type: integer
- *         categoria_id:
- *           type: string
- *           format: uuid
- */
 }
 
 export default createProductsRouter
