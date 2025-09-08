@@ -1,4 +1,3 @@
-import { email } from 'zod'
 import sequelize from '../../utils/mssql.config.js'
 import { DataTypes } from 'sequelize'
 
