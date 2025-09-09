@@ -70,6 +70,13 @@ Compra.hasMany(DetalleCompra, {
 DetalleCompra.belongsTo(Compra, {
   foreignKey: 'compraId'
 });
+// Relación entre Venta y Usuario
+Venta.belongsTo(Usuario, {
+  foreignKey: 'usuarioId'
+});
+Usuario.hasMany(Venta, {
+  foreignKey: 'usuarioId'
+});
 
 (async () => {
   await sequelize.sync({ force: true })

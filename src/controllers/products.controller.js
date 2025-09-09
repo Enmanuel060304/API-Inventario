@@ -3,7 +3,7 @@ export class ProductsController {
     this.productService = ProductService
   }
 
-  async getProducts(req, res) {
+  getProducts = async (req, res) => {
     try {
       const products = await this.productService.getAllProducts()
       res.json(products)
@@ -12,7 +12,7 @@ export class ProductsController {
     }
   }
 
-  async createProduct(req, res) {
+  createProduct = async (req, res) => {
     try {
       const newProduct = await this.productService.createProduct(req.body)
       res.status(201).json(newProduct)
@@ -21,7 +21,7 @@ export class ProductsController {
     }
   }
 
-  async updateProduct(req, res) {
+  updateProduct = async (req, res) => {
     try {
       const updatedProduct = await this.productService.updateProduct(req.params.id, req.body)
       res.json(updatedProduct)
@@ -30,7 +30,7 @@ export class ProductsController {
     }
   }
 
-  async deleteProduct(req, res) {
+  deleteProduct = async (req, res) => {
     try {
       await this.productService.deleteProduct(req.params.id)
       res.status(204).send()

@@ -23,7 +23,7 @@ const createProductsRouter = ({ ProductsController }) => {
    *               items:
    *                 $ref: '#/components/schemas/Producto'
    */
-  router.get('/', authMiddleware, (req, res) => ProductsController.getProducts(req, res))
+  router.get('/', authMiddleware, ProductsController.getProducts)
 
   /**
    * @swagger
@@ -55,7 +55,7 @@ const createProductsRouter = ({ ProductsController }) => {
    *       400:
    *         description: Datos inválidos
    */
-  router.post('/', authMiddleware, validateProductInput, (req, res) => ProductsController.createProduct(req, res))
+  router.post('/', authMiddleware, validateProductInput, ProductsController.createProduct)
 
   /**
    * @swagger
@@ -96,7 +96,7 @@ const createProductsRouter = ({ ProductsController }) => {
    *       404:
    *         description: Producto no encontrado
    */
-  router.patch('/:id', validateProductInput, authMiddleware, (req, res) => ProductsController.updateProduct(req, res))
+  router.patch('/:id', validateProductInput, authMiddleware, ProductsController.updateProduct)
 
   /**
    * @swagger
@@ -119,50 +119,9 @@ const createProductsRouter = ({ ProductsController }) => {
    *       404:
    *         description: Producto no encontrado
    */
-  router.delete('/:id', authMiddleware, (req, res) => ProductsController.deleteProduct(req, res))
+  router.delete('/:id', authMiddleware, ProductsController.deleteProduct)
 
   return router
-
-/**
- * @swagger
- * components:
- *   schemas:
- *     Producto:
- *       type: object
- *       properties:
- *         id:
- *           type: string
- *           format: uuid
- *         nombre:
- *           type: string
- *         descripcion:
- *           type: string
- *           nullable: true
- *         precio:
- *           type: number
- *           format: float
- *         stock:
- *           type: integer
- *         categoria_id:
- *           type: string
- *           format: uuid
- *     ProductoInput:
- *       type: object
- *       properties:
- *         nombre:
- *           type: string
- *         descripcion:
- *           type: string
- *           nullable: true
- *         precio:
- *           type: number
- *           format: float
- *         stock:
- *           type: integer
- *         categoria_id:
- *           type: string
- *           format: uuid
- */
 }
 
 export default createProductsRouter
