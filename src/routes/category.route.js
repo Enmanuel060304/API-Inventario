@@ -24,7 +24,7 @@ const createCategoryRouter = ({ CategoryController }) => {
   *       200:
   *         description: Lista de categorías
    */
-  router.get('/',authMiddleware, CategoryController.getAllCategories)
+  router.get('/',authMiddleware, CategoryController.getCategories)
 
   /**
    * @swagger
