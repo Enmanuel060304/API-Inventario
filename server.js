@@ -6,6 +6,7 @@ import categoryRouter from './src/utils/category/categoryDependencies.js'
 import productRouter from './src/utils/product/productDependecy.js'
 import providerRouter from './src/utils/provider/providerDependecy.js'
 import { ventasRouter } from './src/utils/sales/salesDependencies.js'
+import clientesRouter from './src/utils/client/client.dependecies.js'
 
 import { PORT } from './src/utils/config.js'
 import cookieParser from 'cookie-parser'
@@ -20,6 +21,7 @@ app.use(cookieParser())
 
 app.use('/api/auth', authRouter)
 app.use('/api/categorias', categoryRouter)
+app.use('/api/clientes', clientesRouter)
 app.use('/api/ventas', ventasRouter)
 app.use('/api/productos', productRouter)
 app.use('/api/proveedores', providerRouter)
