@@ -10,7 +10,7 @@ export const createRouter = ({ ClienteController }) => {
 
   router.get("/:id", authMiddleware,  ClienteController.getClientById);
 
-  router.put("/:id", authMiddleware, ClienteController.updateClient);
+  router.patch("/:id", authMiddleware, ClienteController.updateClient);
 
   router.delete("/:id", authMiddleware, ClienteController.deleteClient);
 
