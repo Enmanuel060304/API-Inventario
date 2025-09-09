@@ -24,7 +24,7 @@ const createCategoryRouter = ({ CategoryController }) => {
   *       200:
   *         description: Lista de categorías
    */
-  router.get('/',authMiddleware,(req, res) => CategoryController.getCategories(req, res))
+  router.get('/',authMiddleware, CategoryController.getCategories)
 
   /**
    * @swagger
@@ -58,7 +58,7 @@ const createCategoryRouter = ({ CategoryController }) => {
    *       400:
    *         description: Datos inválidos
    */
-  router.post('/',authMiddleware, ValidateBody, (req, res) => CategoryController.createCategory(req, res))
+  router.post('/',authMiddleware, ValidateBody, CategoryController.createCategory)
 
   /**
    * @swagger
@@ -101,7 +101,7 @@ const createCategoryRouter = ({ CategoryController }) => {
    *       404:
    *         description: Categoría no encontrada
    */
-  router.patch('/:id', authMiddleware, ValidateUpdateBody, (req, res) => CategoryController.updateCategory(req, res))
+  router.patch('/:id', authMiddleware, ValidateUpdateBody, CategoryController.updateCategory)
 
 
   /**
@@ -125,7 +125,7 @@ const createCategoryRouter = ({ CategoryController }) => {
   *       404:
   *         description: Categoría no encontrada
    */
-  router.delete('/:id',authMiddleware, (req, res) => CategoryController.deleteCategory(req, res))
+  router.delete('/:id',authMiddleware, CategoryController.deleteCategory)
 
   return router
 }
