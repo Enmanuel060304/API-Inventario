@@ -1,19 +1,18 @@
 import { Router } from "express";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 export const createRouter = ({ ClienteController }) => {
   const router = Router();
 
-  router.post("/", ClienteController.createClient);
+  router.post("/", authMiddleware, ClienteController.createClient);
 
-  router.get("/", ClienteController.getAllClients);
+  router.get("/", authMiddleware, ClienteController.getAllClients);
 
-  router.get("/:id", ClienteController.getClientById);
+  router.get("/:id", authMiddleware,  ClienteController.getClientById);
 
-  router.put("/:id", ClienteController.updateClient);
+  router.put("/:id", authMiddleware, ClienteController.updateClient);
 
-  router.delete("/:id", ClienteController.deleteClient);
-
-  router.delete("/:id", ClienteController.deleteClient);
+  router.delete("/:id", authMiddleware, ClienteController.deleteClient);
 
   return router;
 }
