@@ -1,8 +1,13 @@
 import VentasModel from '../models/mssqlModels/venta.model.js'
+import { Op } from 'sequelize';
 
 export class VentasRepository {
 
-  findAll = async () => await VentasModel.findAll({})
+  findAll = async () => await VentasModel.findAll({
+    where: {
+      estado: { [Op.ne]: 'ANULADA' }
+    }
+  })
 
   create = async (ventaData) => await VentasModel.create(ventaData)
 

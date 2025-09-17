@@ -23,9 +23,21 @@ const Venta = sequelize.define('ventas', {
       key: 'id'
     }
   },
+  estado: {
+    type: DataTypes.STRING(20),
+    allowNull: false,
+    defaultValue: 'BORRADOR',
+    validate: {
+      isIn: [['BORRADOR', 'COMPLETADO', 'ANULADA']]
+    }
+  },
   total: {
     type: DataTypes.DECIMAL(10, 2),
-    allowNull: false
+    allowNull: true,
+    defaultValue: 0.00,
+    validate: {
+      min: 0
+    }
   },
   createdAt: {
     type: DataTypes.DATE,
@@ -36,7 +48,7 @@ const Venta = sequelize.define('ventas', {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW
-  }
+  },
 }, {
   tableName: 'ventas',
   schema: 'dbo',

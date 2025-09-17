@@ -13,8 +13,13 @@ export class VentasController {
   }
 
   createVenta = async (req, res) => {
+    console.log(req.user.id)
+    const data = {
+      usuarioId: req.user.id,
+      ...req.body
+    }
     try {
-      const nuevaVenta = await this.VentasService.createVenta(req.body)
+      const nuevaVenta = await this.VentasService.createVenta(data)
       res.status(201).json(nuevaVenta)
     } catch (error) {
       res.status(500).json({ message: 'Error al crear la venta', error: error.message })
